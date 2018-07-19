@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import './App.css'
+import RangeSlider from './components/RangeSlider'
 
 class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<h1>hello world!</h1>
+				<RangeSlider />
 			</div>
 		)
 	}
