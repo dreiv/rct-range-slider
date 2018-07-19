@@ -17,9 +17,10 @@ export default class RangeSlider extends Component {
 	render() {
 		const { className, ...props } = this.props
 		const { progress } = this.state
+		const inverseStyle = { left: `${(progress / 4) * 100}%` }
+
 		return (
-			<label className={`toggle ${className}`}>
-				<p>hello try this</p>
+			<label className={`slider ${className}`}>
 				<input
 					type="range"
 					value={progress}
@@ -29,7 +30,8 @@ export default class RangeSlider extends Component {
 					{...props}
 				/>
 
-				<p>progress: {progress}</p>
+				<div className="slider__overlay" />
+				<div className="slider__range-inverse" style={inverseStyle} />
 			</label>
 		)
 	}

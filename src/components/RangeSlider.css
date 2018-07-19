@@ -1,0 +1,24 @@
+.slider {
+	position: relative;
+
+	display: inline-flex;
+}
+
+.slider__overlay,
+.slider__range-inverse {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	pointer-events: none;
+}
+
+.slider__overlay {
+	background-image: linear-gradient(to right, #1abc9c 0%, #f1c40f 50%, #e74c3c 100%);
+}
+
+.slider__range-inverse {
+	background: #ccc;
+}
