@@ -5,7 +5,8 @@
 }
 
 .slider__overlay,
-.slider__range-inverse {
+.slider__range-inverse,
+.slider__knob {
 	position: absolute;
 	top: 0;
 	right: 0;

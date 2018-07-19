@@ -17,7 +17,10 @@ export default class RangeSlider extends Component {
 	render() {
 		const { className, ...props } = this.props
 		const { progress } = this.state
-		const inverseStyle = { left: `${(progress / 4) * 100}%` }
+
+		const oO = (progress / 4) * 100
+
+		const inverseStyle = { left: `${oO}%` }
 
 		return (
 			<label className={`slider ${className}`}>
@@ -29,9 +32,11 @@ export default class RangeSlider extends Component {
 					onChange={this.handleChange}
 					{...props}
 				/>
-
 				<div className="slider__overlay" />
 				<div className="slider__range-inverse" style={inverseStyle} />
+				<span className="slider__knob" style={inverseStyle}>
+					O
+				</span>
 			</label>
 		)
 	}
