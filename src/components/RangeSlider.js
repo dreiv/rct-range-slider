@@ -1,24 +1,25 @@
 import React, { Component } from 'react'
+import { callAll } from '../utils'
 import './RangeSlider.css'
 
 export default class RangeSlider extends Component {
 	constructor(props) {
 		super(props)
 
-		this.state = {
-			progress: 2,
-		}
+		this.state = { value: 0 }
 	}
 
-	handleChange = ({ target: { value } }) => {
-		this.setState({ progress: +value })
+	static getDerivedStateFromProps = ({ value }) => (value ? { value } : null)
+
+	internalOnChange = ({ target: { value } }) => {
+		this.setState({ value })
 	}
 
 	render() {
-		const { className, ...props } = this.props
-		const { progress } = this.state
+		const { className, onChange, ...props } = this.props
+		const { value } = this.state
 
-		const oO = (progress / 4) * 100
+		const oO = (value / 4) * 100
 
 		const inverseStyle = { left: `${oO}%` }
 
@@ -26,10 +27,10 @@ export default class RangeSlider extends Component {
 			<label className={`slider ${className}`}>
 				<input
 					type="range"
-					value={progress}
+					value={value}
 					min="0"
 					max="4"
-					onChange={this.handleChange}
+					onChange={callAll(this.internalOnChange, onChange)}
 					{...props}
 				/>
 				<div className="slider__overlay" />
