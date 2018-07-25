@@ -2,12 +2,6 @@
 	position: relative;
 
 	display: flex;
-	justify-content: flex-end;
-
-	height: 14px;
-
-	border-radius: 10px;
-	background-image: linear-gradient(to right, #1abc9c 0%, #f1c40f 50%, #e74c3c 100%);
 }
 
 .slider input {
@@ -20,6 +14,18 @@
 	opacity: 0;
 }
 
+.slider__range {
+	height: 14px;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+
+	border-radius: 10px;
+	overflow: hidden;
+
+	background-image: linear-gradient(to right, #1abc9c 0%, #f1c40f 50%, #e74c3c 100%);
+}
+
 .slider__range-inverse {
 	pointer-events: none;
 
@@ -27,16 +33,16 @@
 }
 
 .slider__handle {
+	margin-left: -.75rem;
 	position: absolute;
-	top: -7px;
+	top: -4px;
 
-	width: 28px;
-	height: 28px;
+	width: 1.5rem;
+	height: 1.5rem;
 
 	pointer-events: none;
 
-	border-width: 0;
+	background: white;
 	border-radius: 50%;
-	background: #fff;
-	box-shadow: 0 3px 8px rgba(0, 0, 0, .4);
+	box-shadow: 0 0 6px rgba(0, 0, 0, .6);
 }

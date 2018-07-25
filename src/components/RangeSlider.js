@@ -32,7 +32,9 @@ export default class RangeSlider extends Component {
 					onChange={callAll(this.internalOnChange, onChange)}
 					{...props}
 				/>
-				<div className="slider__range-inverse" style={inverseStyle} />
+				<div className="slider__range">
+					<div className="slider__range-inverse" style={inverseStyle} />
+				</div>
 				<span className="slider__handle" style={handleStyle} />
 			</label>
 		)
