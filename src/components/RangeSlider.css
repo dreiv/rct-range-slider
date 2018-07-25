@@ -1,4 +1,5 @@
 .slider {
+	height: 14px;
 	position: relative;
 
 	display: flex;
@@ -15,7 +16,6 @@
 }
 
 .slider__range {
-	height: 14px;
 	width: 100%;
 	display: flex;
 	justify-content: flex-end;
@@ -32,6 +32,15 @@
 	background: #ccc;
 }
 
+.slider__handle-wrapper {
+	margin: 0 14px;
+	position: absolute;
+	right: 0;
+	left: 0;
+
+	pointer-events: none;
+}
+
 .slider__handle {
 	margin-left: -.75rem;
 	position: absolute;
@@ -42,7 +51,8 @@
 
 	pointer-events: none;
 
-	background: white;
+	border: 3px solid white;
 	border-radius: 50%;
+	box-sizing: border-box;
 	box-shadow: 0 0 6px rgba(0, 0, 0, .6);
 }

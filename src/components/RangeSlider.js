@@ -35,7 +35,9 @@ export default class RangeSlider extends Component {
 				<div className="slider__range">
 					<div className="slider__range-inverse" style={inverseStyle} />
 				</div>
-				<span className="slider__handle" style={handleStyle} />
+				<div className="slider__handle-wrapper">
+					<span className="slider__handle" style={handleStyle} />
+				</div>
 			</label>
 		)
 	}
