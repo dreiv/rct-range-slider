@@ -18,10 +18,20 @@ class App extends Component {
 
 		return (
 			<div className="App">
-				<RangeSlider value={value} onChange={this.handleValueChange} />
+				<div className="slider__wrapper">
+					<h3>Sliding slider:</h3>
+					<RangeSlider value={value} onChange={this.handleValueChange} />
+					<p>after slider</p>
+				</div>
 
 				<h3>Control slider value: </h3>
-				<input type="number" value={value} onChange={this.handleValueChange} />
+				<input
+					type="number"
+					value={value}
+					onChange={this.handleValueChange}
+					min="0"
+					max="4"
+				/>
 			</div>
 		)
 	}

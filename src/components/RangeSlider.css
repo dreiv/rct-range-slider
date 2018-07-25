@@ -1,25 +1,42 @@
 .slider {
 	position: relative;
 
-	display: inline-flex;
-}
+	display: flex;
+	justify-content: flex-end;
 
-.slider__overlay,
-.slider__range-inverse,
-.slider__knob {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
+	height: 14px;
 
-	pointer-events: none;
-}
-
-.slider__overlay {
+	border-radius: 10px;
 	background-image: linear-gradient(to right, #1abc9c 0%, #f1c40f 50%, #e74c3c 100%);
 }
 
+.slider input {
+	position: absolute;
+
+	width: 100%;
+
+	cursor: pointer;
+
+	opacity: 0;
+}
+
 .slider__range-inverse {
+	pointer-events: none;
+
 	background: #ccc;
+}
+
+.slider__handle {
+	position: absolute;
+	top: -7px;
+
+	width: 28px;
+	height: 28px;
+
+	pointer-events: none;
+
+	border-width: 0;
+	border-radius: 50%;
+	background: #fff;
+	box-shadow: 0 3px 8px rgba(0, 0, 0, .4);
 }

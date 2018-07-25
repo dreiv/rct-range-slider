@@ -1,0 +1,10 @@
+.App {
+	padding: 12.5rem 1rem 1rem;
+}
+
+.slider__wrapper {
+	width: 20rem;
+	padding: 1em;
+
+	border: .0625rem solid limegreen;
+}
