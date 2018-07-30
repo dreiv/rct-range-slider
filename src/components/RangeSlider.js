@@ -19,8 +19,7 @@ export default class RangeSlider extends Component {
 		const { className, onChange, ...props } = this.props
 		const { value } = this.state
 		const oO = (value / 4) * 100
-		const inverseStyle = { width: `${100 - oO}%` }
-		const handleStyle = { left: `${oO}%` }
+		const rangeStyle = { width: `${oO}%` }
 
 		return (
 			<label className="slider">
@@ -32,11 +31,17 @@ export default class RangeSlider extends Component {
 					onChange={callAll(this.internalOnChange, onChange)}
 					{...props}
 				/>
-				<div className="slider__range">
-					<div className="slider__range-inverse" style={inverseStyle} />
+				<div className="slider__range-container">
+					<div className="slider__range-inverse" />
+					<span className="slider__handle"/>
+					<div className="slider__range" style={rangeStyle} />
 				</div>
-				<div className="slider__handle-wrapper">
-					<span className="slider__handle" style={handleStyle} />
+				<div className="slider__range-labels">
+					<span title="1"></span>
+					<span title="2"></span>
+					<span title="3"></span>
+					<span title="4"></span>
+					<span title="5"></span>
 				</div>
 			</label>
 		)
