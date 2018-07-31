@@ -78,13 +78,18 @@
 }
 
 .slider__range-labels button.active::after {
-	content: 'Active';
+	content: attr(data);
 	position: absolute;
 	bottom: -1rem;
+	right: 0;
+}
+
+.slider__range-labels button:first-of-type.active::after {
+	right: inherit;
 }
 
 .slider__range-labels button:not(.active):hover::after {
-	content: 'Preview';
+	content: attr(data);
 	position: absolute;
 	bottom: -1rem;
 }

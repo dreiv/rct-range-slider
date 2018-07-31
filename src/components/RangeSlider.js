@@ -54,6 +54,7 @@ export default class RangeSlider extends Component {
 									key={idx}
 									className={cls}
 									onClick={this.handleClick.bind(this, item)}
+									data={`Item${idx}`}
 								/>
 							</React.Fragment>
 						)})
