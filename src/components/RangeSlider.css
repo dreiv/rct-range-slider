@@ -20,7 +20,7 @@
 .slider__range-container {
 	width: 100%;
 	display: flex;
-	border-radius: 10px;
+	/* border-radius: 10px; */
 	flex-flow: row-reverse;
 
 	background-image: linear-gradient(to right, #892AFF 0%, #23B2EE 100%);
@@ -29,26 +29,35 @@
 .slider__range-inverse {
 	flex: 1;
 	pointer-events: none;
-	border-radius: 0 10px 10px 0;
+	/* border-radius: 0 10px 10px 0; */
 
 	background: #ccc;
 }
 
 .slider__handle {
-	width: 1.2rem;
+	width: 0;
 	height: 1.2rem;
 	align-self: center;
+	position: relative;
+}
+
+.slider__handle::after {
+	content: '';
+	display: block;
+	transform: translateX(-7px);
+
+	width: 1.2rem;
+	height: 1.2rem;
 	margin: 0 -3px;
 
 	pointer-events: none;
 
-	border: 3px solid white;
 	border-radius: 50%;
-	box-sizing: border-box;
+	background: white;
 	box-shadow: 0 0 6px rgba(0, 0, 0, .6);
 }
 
-/* .slider__range-labels {
+.slider__range-labels {
 	display: flex;
 	position: absolute;
 	width: 100%;
@@ -57,15 +66,25 @@
 	pointer-events: none;
 }
 
-.slider__range-labels span {
+.slider__range-labels button {
+	pointer-events: auto;
 	position: relative;
 	height: 100%;
+	padding: 1px;
+	border: none;
+	background: white;
+	cursor: pointer;
+	outline: none;
 }
 
-.slider__range-labels span::after {
+.slider__range-labels button.active::after {
+	content: 'Active';
 	position: absolute;
-	content: '';
-	width: 1px;
-	background: red;
-	height: 100%;
-} */
+	bottom: -1rem;
+}
+
+.slider__range-labels button:not(.active):hover::after {
+	content: 'Preview';
+	position: absolute;
+	bottom: -1rem;
+}

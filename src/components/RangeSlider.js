@@ -15,11 +15,18 @@ export default class RangeSlider extends Component {
 		this.setState({ value })
 	}
 
+	handleClick = value => {
+		const evt = {target: {value}}
+		this.props.onChange(evt)
+		this.setState({ value })
+	}
+
 	render() {
 		const { className, onChange, ...props } = this.props
 		const { value } = this.state
-		const oO = (value / 4) * 100
+		const oO = (value / 3) * 100
 		const rangeStyle = { width: `${oO}%` }
+		const arr = [0, 1, 2, 3]
 
 		return (
 			<label className="slider">
@@ -27,7 +34,7 @@ export default class RangeSlider extends Component {
 					type="range"
 					value={value}
 					min="0"
-					max="4"
+					max="3"
 					onChange={callAll(this.internalOnChange, onChange)}
 					{...props}
 				/>
@@ -37,11 +44,20 @@ export default class RangeSlider extends Component {
 					<div className="slider__range" style={rangeStyle} />
 				</div>
 				<div className="slider__range-labels">
-					<span title="1"></span>
-					<span title="2"></span>
-					<span title="3"></span>
-					<span title="4"></span>
-					<span title="5"></span>
+					{ arr.map((item, idx) => {
+						const isActive = item === +value
+						const cls = isActive ? 'active' : null
+
+						return (
+							<React.Fragment>
+								<button
+									key={idx}
+									className={cls}
+									onClick={this.handleClick.bind(this, item)}
+								/>
+							</React.Fragment>
+						)})
+					}
 				</div>
 			</label>
 		)
