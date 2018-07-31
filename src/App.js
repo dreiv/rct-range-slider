@@ -30,7 +30,7 @@ class App extends Component {
 					value={value}
 					onChange={this.handleValueChange}
 					min="0"
-					max="4"
+					max="3"
 				/>
 			</div>
 		)

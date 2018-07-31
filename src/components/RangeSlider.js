@@ -15,12 +15,6 @@ export default class RangeSlider extends Component {
 		this.setState({ value })
 	}
 
-	handleClick = value => {
-		const evt = {target: {value}}
-		this.props.onChange(evt)
-		this.setState({ value })
-	}
-
 	render() {
 		const { className, onChange, ...props } = this.props
 		const { value } = this.state
@@ -30,6 +24,26 @@ export default class RangeSlider extends Component {
 
 		return (
 			<label className="slider">
+				<div className="slider__range-track">
+					<div className="slider__range-inverse" />
+					<span className="slider__handle"/>
+					<div className="slider__range" style={rangeStyle} />
+					<div className="slider__range-labels">
+						{ arr.map((item, idx) => {
+							const isActive = item === +value
+
+							return (
+								<React.Fragment>
+									<label
+										key={idx}
+										className={isActive && 'active'}
+										data={`Item${idx}`}
+									/>
+								</React.Fragment>
+							)})
+						}
+					</div>
+				</div>
 				<input
 					type="range"
 					value={value}
@@ -38,28 +52,6 @@ export default class RangeSlider extends Component {
 					onChange={callAll(this.internalOnChange, onChange)}
 					{...props}
 				/>
-				<div className="slider__range-container">
-					<div className="slider__range-inverse" />
-					<span className="slider__handle"/>
-					<div className="slider__range" style={rangeStyle} />
-				</div>
-				<div className="slider__range-labels">
-					{ arr.map((item, idx) => {
-						const isActive = item === +value
-						const cls = isActive ? 'active' : null
-
-						return (
-							<React.Fragment>
-								<button
-									key={idx}
-									className={cls}
-									onClick={this.handleClick.bind(this, item)}
-									data={`Item${idx}`}
-								/>
-							</React.Fragment>
-						)})
-					}
-				</div>
 			</label>
 		)
 	}
