@@ -16,11 +16,10 @@ export default class RangeSlider extends Component {
 	}
 
 	render() {
-		const { className, onChange, disabled, ...props } = this.props
+		const { className, onChange, disabled, max, labels, ...props } = this.props
 		const { value } = this.state
-		const oO = (value / 3) * 100
-		const rangeStyle = { width: `${oO}%` }
-		const arr = [0, 1, 2, 3]
+		const fill = (value / (max || 1) ) * 100
+		const rangeStyle = { width: `${fill}%` }
 		const sliderClasses = ["slider"]
 
 		if (disabled) {
@@ -34,24 +33,25 @@ export default class RangeSlider extends Component {
 					<span className="slider__handle"/>
 					<div className="slider__range" style={rangeStyle} />
 					<div className="slider__labels">
-						{ arr.map((item, idx) => {
-							const isActive = item === Math.floor(value)
+						{ labels.map((label, idx) => {
+							const isActive = idx === Math.floor(value)
 
 							return (
 								<div className="slider__label-wrapper" key={idx}>
 									<label className={isActive ? 'active' : null}>
-										{`Item${idx}`}
+										{label}
 									</label>
 								</div>
 							)})
 						}
 					</div>
 				</div>
+
 				<input
 					type="range"
 					value={value}
 					min="0"
-					max="3"
+					max={max}
 					onChange={callAll(this.internalOnChange, onChange)}
 					disabled={disabled}
 					{...props}

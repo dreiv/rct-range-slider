@@ -29,8 +29,10 @@ class App extends Component {
 					<h3>Sliding slider:</h3>
 					<RangeSlider
 						value={value}
+						max="3"
 						onChange={this.handleValueChange}
 						disabled={!enabled}
+						labels={['Junior', 'Senior', 'Expert', 'Guru']}
 					/>
 					<p>after slider</p>
 				</div>
