@@ -16,28 +16,30 @@ export default class RangeSlider extends Component {
 	}
 
 	render() {
-		const { className, onChange, ...props } = this.props
+		const { className, onChange, disabled, ...props } = this.props
 		const { value } = this.state
 		const oO = (value / 3) * 100
 		const rangeStyle = { width: `${oO}%` }
 		const arr = [0, 1, 2, 3]
+		const sliderClasses = ["slider"]
+
+		if (disabled) {
+			sliderClasses.push('disabled')
+		}
 
 		return (
-			<label className="slider">
+			<label className={sliderClasses.join(' ')}>
 				<div className="slider__range-track">
 					<div className="slider__range-inverse" />
 					<span className="slider__handle"/>
 					<div className="slider__range" style={rangeStyle} />
 					<div className="slider__labels">
 						{ arr.map((item, idx) => {
-							const isActive = item === +value
+							const isActive = item === Math.floor(value)
 
 							return (
-								<div className="slider__label-wrapper">
-									<label
-										key={idx}
-										className={isActive && 'active'}
-									>
+								<div className="slider__label-wrapper" key={idx}>
+									<label className={isActive ? 'active' : null}>
 										{`Item${idx}`}
 									</label>
 								</div>
@@ -51,6 +53,7 @@ export default class RangeSlider extends Component {
 					min="0"
 					max="3"
 					onChange={callAll(this.internalOnChange, onChange)}
+					disabled={disabled}
 					{...props}
 				/>
 			</label>

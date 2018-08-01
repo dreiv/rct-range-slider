@@ -6,21 +6,32 @@ class App extends Component {
 	constructor(props) {
 		super(props)
 
-		this.state = { value: 0 }
+		this.state = {
+			value: 0,
+			enabled: true,
+		}
 	}
 
 	handleValueChange = ({ target: { value } }) => {
 		this.setState({ value })
 	}
 
+	handleEnabledChange = () => {
+		this.setState(prev => ({ enabled: !prev.enabled}))
+	}
+
 	render() {
-		const { value } = this.state
+		const { value, enabled } = this.state
 
 		return (
 			<div className="App">
 				<div className="slider__wrapper">
 					<h3>Sliding slider:</h3>
-					<RangeSlider value={value} onChange={this.handleValueChange} />
+					<RangeSlider
+						value={value}
+						onChange={this.handleValueChange}
+						disabled={!enabled}
+					/>
 					<p>after slider</p>
 				</div>
 
@@ -32,6 +43,13 @@ class App extends Component {
 					min="0"
 					max="3"
 				/>
+
+				<h3>Control slider enabled: </h3>
+				<input
+					type="checkbox"
+					value={enabled}
+					onChange={this.handleEnabledChange}
+					/>
 			</div>
 		)
 	}
