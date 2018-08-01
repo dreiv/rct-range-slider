@@ -28,18 +28,19 @@ export default class RangeSlider extends Component {
 					<div className="slider__range-inverse" />
 					<span className="slider__handle"/>
 					<div className="slider__range" style={rangeStyle} />
-					<div className="slider__range-labels">
+					<div className="slider__labels">
 						{ arr.map((item, idx) => {
 							const isActive = item === +value
 
 							return (
-								<React.Fragment>
+								<div className="slider__label-wrapper">
 									<label
 										key={idx}
 										className={isActive && 'active'}
-										data={`Item${idx}`}
-									/>
-								</React.Fragment>
+									>
+										{`Item${idx}`}
+									</label>
+								</div>
 							)})
 						}
 					</div>
